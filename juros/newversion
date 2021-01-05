@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void ler(float *C, float *i, float *t)
+{
+    printf("Digite o valor inicial da transacao: ");
+    scanf("%f",&(*C));
+    printf("Digite a taxa de juros: ");
+    scanf("%f",&(*i));
+    printf("Digite o periodo da transacao: ");
+    scanf("%f",&(*t));
+}
+
+
+void choice1(float C, float i, float t)
+{
+    int m;
+    double M,J=0;
+    printf("Juros Simples \n\n");
+    printf ("Formula de juros Simples: J=%0.2f*%0.2f*%0.2f \n\n", C,i,t);
+    J=(C*(i/100)*t);
+    printf("seus juros sao de: %0.2lf",J);
+    printf("\n\n Se voce desejar fazer o montante\n digite 1 se nao digite 2: ");
+    scanf("%d", &m);
+    if (m==1) {
+        printf ("Formula do montante: M=%0.2f+%0.2f \n\n", C,J);
+        M=(C+J);
+        printf("seu montante e de: %0.2lf",M);
+        } 
+        else printf("finalizado\n");
+        
+}
+
+void choice2(float C, float i, float t)
+{
+    int m;
+    double M,J=0;
+    printf("\nJuros Compostos\n");
+    printf ("Formula de juros Compostos: M=%g(1+(%g/100))^%g \n\n", C,i,t);
+    M=C*(1+pow((i/100),t));
+    printf("seus Montante sao de: %g",M);
+    J=(M-C);
+    printf("\n");
+    printf("seus Juros sao de: %g",J);
+}
+void coisa(int CB,float C, float i, float t)
+{
+    printf("Digite 1 para Juros Sinples \n ou 2 para juros compostos: ");
+    scanf("%d", &CB);
+    if (CB==1)choice1(C,i,t);
+    if (CB==2)choice2(C,i,t);
+    else ("finalizando\n");
+}
+
+
+
+int main() {
+    float C=0,i=0,t=0;
+    int CB;
+    ler(&C,&i,&t);
+    coisa(CB,C,i,t);
+    return 0;
+}
